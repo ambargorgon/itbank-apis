@@ -6,10 +6,16 @@ from libros.views import LibroViewSet
 # from libros.views import UserList, UserDetail
 from libros.views import UserViewSet
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('libros/', LibroLists.as_view()),
-    path('libros/<int:pk>', LibroDetails.as_view()),
-    path('users/', UserList.as_view()),
-    path('users/<int:pk>', UserDetail.as_view())
-]
+
+from django.urls import path, include
+
+urlpatterns = [path('admin/', admin.site.urls),
+               path('', include('libros.urls')),]
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('libros/', LibroLists.as_view()),
+#     path('libros/<int:pk>', LibroDetails.as_view()),
+#     path('users/', UserList.as_view()),
+#     path('users/<int:pk>', UserDetail.as_view())
+# ]

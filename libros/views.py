@@ -17,6 +17,9 @@ from rest_framework.decorators import api_view
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework import viewsets
 
+# import reverse
+# from django.urls import reverse
+
 # Views Originales
 
 # Create your views here.
@@ -62,6 +65,7 @@ class LibroViewSet(viewsets.ModelViewSet):
             libro.delete()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(status=status.HTTP_404_NOT_FOUND)
+
 #actualizar un libro
     def put(self, request, pk):
         libro = Libro.objects.filter(pk=pk).first()
@@ -85,9 +89,9 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     
-@api_view(['GET'])
-def api_root(request, format=None):
-    return Response({
-        'users': reverse('user-list', request=request, format=format),
-        'libros': reverse('libros-list', request=request, format=format)
-    })
+# @api_view(['GET'])
+# def api_root(request, format=None):
+#     return Response({
+#         'users': reverse('user-list', request=request, format=format),
+#         'libros': reverse('libros-list', request=request, format=format)
+#     })

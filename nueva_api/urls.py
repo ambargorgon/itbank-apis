@@ -1,8 +1,10 @@
 from django.contrib import admin
 from django.urls import path
-from libros.views import LibroLists
-from libros.views import LibroDetails
-from libros.views import UserList, UserDetail
+# from libros.views import LibroLists
+# from libros.views import LibroDetails
+from libros.views import LibroViewSet
+# from libros.views import UserList, UserDetail
+from libros.views import UserViewSet
 
 urlpatterns = [
     path('admin/', admin.site.urls),

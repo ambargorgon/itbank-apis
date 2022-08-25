@@ -15,32 +15,45 @@ from rest_framework import generics
 from rest_framework import permissions
 from rest_framework.decorators import api_view
 from rest_framework.pagination import LimitOffsetPagination
+from rest_framework import viewsets
+
+# Views Originales
 
 # Create your views here.
-class LibroLists(APIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    def post(self, request, format=None):
-        serializer = LibroSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save(owner=self.request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-# ver todos los libros
-    def get(self, request): 
-        libros = Libro.objects.all().order_by('created_at')
-        paginator = LimitOffsetPagination()
-        result_page = paginator.paginate_queryset(libros, request)
-        serializer = LibroSerializer(result_page, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+# class LibroLists(APIView):
+#     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+#     def post(self, request, format=None):
+#         serializer = LibroSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save(owner=self.request.user)
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+# # ver todos los libros
+#     def get(self, request): 
+#         libros = Libro.objects.all().order_by('created_at')
+#         paginator = LimitOffsetPagination()
+#         result_page = paginator.paginate_queryset(libros, request)
+#         serializer = LibroSerializer(result_page, many=True)
+#         return Response(serializer.data, status=status.HTTP_200_OK)
 
-class LibroDetails(APIView):
+# class LibroDetails(APIView):
+#     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+#     def get(self, request, pk):
+#         libro = Libro.objects.filter(pk=pk).first()
+#         serializer = LibroSerializer(libro)
+#         if libro:
+#             return Response(serializer.data, status=status.HTTP_200_OK)
+#         return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
+    
+#Nueva ViewSet:
+class LibroViewSet(viewsets.ModelViewSet):
+    queryset = Libro.objects.all()
+    serializer_class = LibroSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    def get(self, request, pk):
-        libro = Libro.objects.filter(pk=pk).first()
-        serializer = LibroSerializer(libro)
-        if libro:
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
+    
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+        
 #borrar un libro   
     def delete(self, request, pk):
         libro = Libro.objects.filter(pk=pk).first()
@@ -58,12 +71,17 @@ class LibroDetails(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-#clase para manejar múltiples instancias
-class UserList(generics.ListAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-#clase para manejar una única instancia
-class UserDetail(generics.RetrieveAPIView):
+# Views originales:
+# #clase para manejar múltiples instancias
+        # class UserList(generics.ListAPIView):
+        #     queryset = User.objects.all()
+        #     serializer_class = UserSerializer
+# #clase para manejar una única instancia
+        # class UserDetail(generics.RetrieveAPIView):
+        #     queryset = User.objects.all()
+        #     serializer_class = UserSerializer
+#Nueva ViewSet:
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     

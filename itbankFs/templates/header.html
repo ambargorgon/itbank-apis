@@ -1,0 +1,37 @@
+<header class="header">
+    <div class="contenedor-nav">
+      <div class="divItbank">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-menu-2 hambur"
+          width="44"
+          height="44"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#2D5D85"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <line x1="4" y1="6" x2="20" y2="6" />
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="4" y1="18" x2="20" y2="18" />
+        </svg>
+        <a href="/"><img src="../static/image/itbank.png" alt="" /></a>
+      </div>
+      <nav class="navBar">
+        {%if user.is_authenticated %}
+        <p class="login">¡Hola {{user.first_name}}!</p>
+        <a name="logaut" class="logOut-header" href="/homebanking">Homebanking</a>
+        <form method="POST">
+          {% csrf_token %}
+          <button name="logaut" class="logOut-header">Cerrar Sesión</button>
+        </form>
+        {%else%}
+        <a class="registerOpen">Hacete Cliente</a>
+        <a class="open">Iniciar Sesión</a>
+        {%endif%}
+
+    </div>
+  </header>

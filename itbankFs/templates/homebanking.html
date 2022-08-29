@@ -1,0 +1,159 @@
+<!-- Create a webpage of a homebanking where the client name is shown, the current account amount and the paid plan. Also show an option to solicit a loan. Style it with bootstrap and css so its beautiful-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="homebanking.css">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}" type="text/css">
+    <title>Homebanking</title>
+</head>
+<body>
+    {% include "header.html" %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Homebanking</h2>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">¡Bienvenido  {{ context.user.customer_name }}!</h5>
+                        <p class="card-text">Tu saldo es de: ${{ context.cuenta.balance }}</p>
+                        <p class="card-text">Tienes contratado el servicio de: {{ context.tarjeta.client_type }}</p>
+                        <p class="card-text">Tu número de IBAN es: {{ context.cuenta.iban }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% for message in messages %}
+    
+    <div class="alert">
+        <p class="msj-alert"  style="
+        text-align: center;
+        padding: 20px 0;
+        font-size: 20px;
+        font-weight: 800;">
+           {{ message }}
+        </p>
+    </div>
+
+    {% endfor %}
+    
+    <div>
+        <form class="formulario" action="" method="POST">
+          {% csrf_token %}
+          <legend>Pedir prestamos</legend>
+          <div class="contenedor-de-cmapos">
+            <div class="campo">{{prestamos.cantidad}}</div>
+            <div class="campo">{{prestamos.motivo}}</div>
+            {% comment %}
+            <div class="campo">{{prestamos.dni}}</div>
+            <div class="campo">{{prestamos.pin}}</div>
+            {% endcomment %}
+          </div>
+
+          <div class="enviar">
+            <button class="btn">Solicitar</button>
+          </div>
+        </form>
+    </div>
+
+    <div class='centrar'>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>¡Tus promociones!</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <h2>News</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="icono">
+          <a href="#"
+            ><img src="../static/image/instagram.png" alt="instagram"
+          /></a>
+          <a href="#"
+            ><img src="../static/image/facebook.png" alt="facebook"
+          /></a>
+          <a href="#"><img src="../static/image/gorjeo.png" alt="twiter" /></a>
+          <a href="#"
+            ><img src="../static/image/linkedin.png" alt="linkedin"
+          /></a>
+        </div>
+        <a href="/"
+          ><img class="itba-img" src="../static/image/itbank.png" alt=""
+        /></a>
+        <div>
+          © 2022 Banco ITBANK S.A. <br />
+          Todos los derechos Reservados.
+        </div>
+      </footer>
+</body>
+</html>

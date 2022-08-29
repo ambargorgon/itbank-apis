@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'css/app.css' %}" type="text/css" />
+    <link rel="icon" href="{% static 'image/IB-icon.png'%}" />
+    <title>ITBANK - Préstamos</title>
+  </head>
+  <body>
+    {% include "header.html" %}
+
+    <section class="container-prestamosMain">
+      <div class="prestamosMain">
+        <div>
+          <h1>Accedé al préstamo que mejor se adapte para vos</h1>
+        </div>
+      </div>
+    </section>
+
+    <main class="prestamos">
+      <div class="prestamos-particular">
+        <img src="../static/image/personal.jpg" alt="" />
+        <div class="descripcionPrestamos">
+          <h3>Préstamo Personal</h3>
+          <ul>
+            <li>Tasa Fija</li>
+            <li>Hasta $3.000.000</li>
+            <li>Plazo hasta 60 meses</li>
+            <li>En pesos</li>
+          </ul>
+          <a href="">Conoce más</a>
+        </div>
+      </div>
+
+      <div class="prestamos-particular">
+        <img src="../static/image/auto.jpg" alt="" />
+        <div class="descripcionPrestamos">
+          <h3>Préstamo Para comprar tu auto</h3>
+          <ul>
+            <li>Tasa Fija</li>
+            <li>Autos nuevos y usados</li>
+            <li>Plazo hasta 60 meses</li>
+            <li>Hasta 80% del valor del auto</li>
+          </ul>
+          <a href="">Conoce más</a>
+        </div>
+      </div>
+
+      <div class="prestamos-particular">
+        <img src="../static/image/casa.jpg" alt="" />
+        <div class="descripcionPrestamos">
+          <h3>Préstamos Hipotecario</h3>
+          <ul>
+            <li>Tasa Fija</li>
+            <li>Plazo hasta 120 meses</li>
+            <li>Hasta 70% del valor</li>
+          </ul>
+          <a href="">Conoce más</a>
+        </div>
+      </div>
+
+      <div>
+        <form class="formulario" action="" method="POST">
+          {% csrf_token %}
+          <legend>Pedir prestamos</legend>
+          <div class="contenedor-de-cmapos">
+            <div class="campo">{{prestamos.cantidad}}</div>
+            <div class="campo">{{prestamos.motivo}}</div>
+            {% comment %}
+            <div class="campo">{{prestamos.dni}}</div>
+            <div class="campo">{{prestamos.pin}}</div>
+            {% endcomment %}
+          </div>
+
+          <div class="enviar">
+            <button class="btn">Solicitar</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="icono">
+        <a href="#"
+          ><img src="../static/image/instagram.png" alt="instagram"
+        /></a>
+        <a href="#"
+          ><img src="../static/image/facebook.png" alt="facebook"
+        /></a>
+        <a href="#"><img src="../static/image/gorjeo.png" alt="twiter" /></a>
+        <a href="#"
+          ><img src="../static/image/linkedin.png" alt="linkedin"
+        /></a>
+      </div>
+      <a href="/"
+        ><img class="itba-img" src="../static/image/itbank.png" alt=""
+      /></a>
+      <div>
+        © 2022 Banco ITBANK S.A. <br />
+        Todos los derechos Reservados.
+      </div>
+    </footer>
+
+    {% include "login.html" %} {% include "register.html" %} {% block barra %}{%include "barraLateral.html" %} {%endblock %}
+
+    <script src="../static/js/app.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

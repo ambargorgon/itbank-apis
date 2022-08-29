@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'css/app.css' %}" type="text/css" />
+    <title>ITBANK - Cuentas</title>
+    <link rel="icon" href="{% static 'image/IB-icon.png'%}" />
+  </head>
+  <body>
+    {% include "header.html" %}
+
+    <section class="seccion-fotoarriba">
+      <img src="../static/image/flyer-cuentas.png" alt="portadaCuentas" />
+    </section>
+
+    <section class="tipos-cuentas">
+      <div class="cuentaClassic div">
+        <div class="text text-classic">
+          <p>
+            Si adquiris una cuenta Classic inmediatamente obtendrás: <br />
+            Una tarjeta de crédito, una caja de ahorro en pesos <br />
+            la posibilidad de retirar hasta $10.000 pesos diarios <br />
+            con una pequeña comisión de 1% por transferencia <br />
+            que podrán ser de hasta $150.000 pesos.
+          </p>
+        </div>
+      </div>
+      <button class="btn-cuenta btn-cl">Quiero ser Classic</button>
+      <div class="cuentaGold div">
+        <div class="text text-gold">
+          <p>
+            Si adquiris una cuenta Gold inmediatamente obtendrás: <br />
+            Una tarjeta de crédito, una caja de ahorro en pesos y dólares,
+            <br />
+            una cuenta corriente y una chequera. Además, contarás con <br />
+            la posibilidad de retirar hasta $20.000 pesos diarios <br />
+            con una mínima comisión de 0.5% por transferencia <br />
+            que podrán ser de hasta $200.000 pesos.
+          </p>
+        </div>
+      </div>
+      <button class="btn-cuenta btn-gl">Quiero ser Gold</button>
+
+      <div class="cuentaBlack div">
+        <div class="text text-black">
+          <p>
+            Adquiriendo la cuenta Black inmediatamente<br />
+            podrás obtener: Una caja de ahorro en pesos <br />
+            y en dólares, una cuenta corriente, 5 tarjetas<br />
+            de crédito, 2 chequeras y la posibilidad <br />
+            de retirar hasta $100.000 pesos diarios, y <br />
+            transferir sin comisión y/o límite alguno.
+          </p>
+        </div>
+      </div>
+      <button class="btn-cuenta btn-bl">Quiero ser Black</button>
+    </section>
+    <footer class="footer">
+      <div class="icono">
+        <a href="#"
+          ><img src="../static/image/instagram.png" alt="instagram"
+        /></a>
+        <a href="#"
+          ><img src="../static/image/facebook.png" alt="facebook"
+        /></a>
+        <a href="#"><img src="../static/image/gorjeo.png" alt="twiter" /></a>
+        <a href="#"
+          ><img src="../static/image/linkedin.png" alt="linkedin"
+        /></a>
+      </div>
+      <a href="/"
+        ><img class="itba-img" src="../static/image/itbank.png" alt=""
+      /></a>
+      <div>
+        © 2022 Banco ITBANK S.A. <br />
+        Todos los derechos Reservados.
+      </div>
+    </footer>
+
+    {% include "login.html" %} {% include "register.html" %} {% block barra %}{%include "barraLateral.html" %} {%endblock %}
+
+    <script src="../static/js/app.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

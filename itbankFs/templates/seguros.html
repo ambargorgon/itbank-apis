@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ITBANK - Seguros</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/app.css' %}" type="text/css">
+  <link rel="icon" href="{% static 'image/IB-icon.png'%}" />
+</head>
+
+<body>
+  {% include "header.html" %}
+  
+  <section class="seccion-fotoarriba">
+    <img src="../static/image/portadaSeguros.png" alt="portadaSeguros">
+  </section>
+  <section class="fotosSeguros">
+    <div class="titulos-fotos">
+      <h1 class="titulo_Seguros">SEGUROS</h1>
+      <h2 class="titulo_subtituloSeguro" id="subtitulo">Elegí los que más se adapten a vos</h2>
+    </div>
+    <!-- FOTOS SEGUROS -->
+    <div class="container-fotosSeguros">
+      <!-- Seguro de Vida -->
+      <div class="foto-seguroDeVida">
+        <figure>
+          <img src="../static/image/seguroDeVId.png" alt="seguroDeVida">
+          <div class="tituloFoto">
+            <h3>SEGURO DE VIDA</h3>
+            <p class="textoFoto">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim architecto veritatis
+              culpa
+              rem.</p>
+          </div>
+        </figure>
+      </div>
+      <!-- Seguro de auto  -->
+      <div class="foto-seguroAutomotor">
+        <figure>
+          <img src="../static/image/seguroAutomotor.png" alt="SeguroAutomor">
+          <div class="tituloFoto">
+            <h3>SEGURO AUTOMOTOR</h3>
+            <p class="textoFoto">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim architecto veritatis
+              culpa
+              rem.</p>
+          </div>
+        </figure>
+      </div>
+      <!-- Seguro de Viaje -->
+      <div class="foto-seguroDeViaje">
+        <figure>
+          <img src="../static/image/seguroDeViaje.png" alt="SeguroDeViaje">
+          <div class="tituloFoto">
+            <h3>SEGURO DE VIAJE</h3>
+            <p class="textoFoto">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim architecto veritatis
+              culpa
+              rem.</p>
+          </div>
+        </figure>
+      </div>
+      <!-- Seguro de Compras -->
+      <div class="foto-seguroDeCompras">
+        <figure>
+          <img src="../static/image/seguroDeCOmpras.png" alt="seguroDeCompras">
+          <div class="tituloFoto">
+            <h3>SEGURO DE COMPRAS</h3>
+            <p class="textoFoto">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim architecto veritatis
+              culpa
+              rem.</p>
+          </div>
+        </figure>
+      </div>
+      <!-- Seguro de Movil -->
+      <div class="foto-seguroDeMovil">
+        <figure>
+          <img src="../static/image/seguroDeMovil.png" alt="seguroDeMovil">
+          <div class="tituloFoto">
+            <h3>SEGURO DE MÓVIL</h3>
+            <p class="textoFoto">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim architecto veritatis
+              culpa
+              rem.</p>
+          </div>
+        </figure>
+      </div>
+      <!-- Seguro de Bici -->
+      <div class="foto-seguroDeBici">
+        <figure>
+          <img src="../static/image/seguroDeBici.png" alt="seguroDeBici">
+          <div class="tituloFoto">
+            <h3>SEGURO DE BICI</h3>
+            <p class="textoFoto">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim architecto veritatis
+              culpa
+              rem.</p>
+          </div>
+        </figure>
+      </div>
+      <!-- Seguro de Pc -->
+      <div class="foto-seguroDePC">
+        <figure>
+          <img src="../static/image/seguroDePC.png" alt="seguroDePC">
+          <div class="tituloFoto">
+            <h3>SEGURO DE PC</h3>
+            <p class="textoFoto">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim architecto veritatis
+              culpa<p>
+          </div>
+        </figure>
+      </div>
+      <!-- Seguro Laboral -->
+      <div class="foto-seguroLaboral">
+        <figure>
+          <img src="../static/image/seguroLaborali.png" alt="seguroLaboral">
+          <div class="tituloFoto">
+            <h3>SEGURO LABORAL</h3>
+            <p class="textoFoto">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim architecto veritatis
+              culpa
+              rem.</p>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+  </section>
+  <footer class="footer">
+    <div class="icono">
+      <a href="#"><img src="../static/image/instagram.png" alt="instagram" /></a>
+      <a href="#"><img src="../static/image/facebook.png" alt="facebook" /></a>
+      <a href="#"><img src="../static/image/gorjeo.png" alt="twiter" /></a>
+      <a href="#"><img src="../static/image/linkedin.png" alt="linkedin" /></a>
+    </div>
+    <a href="/"><img class="itba-img" src="../static/image/itbank.png" alt="" /></a>
+    <div>
+      © 2022 Banco ITBANK S.A. <br /> Todos los derechos Reservados.
+    </div>
+  </footer>
+
+  {% include "login.html" %} {% include "register.html" %} 
+  {% block barra %}{% include "barraLateral.html" %} {%endblock %}
+
+  <!-- Script -->
+  <script src="../static/js/app.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"
+  ></script>
+</body>
+</html>

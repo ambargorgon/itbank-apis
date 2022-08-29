@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'css/app.css' %}" type="text/css" />
+    <title>ITBANK - Atención al cliente</title>
+    <!-- include a png icon so that it is rendered correctly and no tpixelated -->
+    <link rel="icon" href="{% static 'image/IB-icon.png'%}" />
+  </head>
+  {% include "header.html" %}
+
+  <body class="atencionBody">
+    <button class="botonAC">
+      <div class="contenedor">Contactos de asistencia personal</div>
+    </button>
+    <button class="botonAC">
+      <div class="contenedor">¿Recuperacion de cuenta?</div>
+    </button>
+
+    <div class="contenedor">
+      <button class="botonAC" type="button" data-bs-toggle="dropdown">
+        Sucursales
+      </button>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <form class="formato">
+      <label class="mensaje"
+        >Si presenta otro problema envielo al personal del ITBANK</label
+      >
+      <br />
+      <textarea
+        class="quejas"
+        name="Quejas"
+        id=""
+        cols="90"
+        rows="7"
+        placeholder="Ayudanos a mejorar"
+        style="font-size: 18px"
+      ></textarea>
+      <br />
+      <input
+        class="envio"
+        type="submit"
+        id="Enviar"
+        value="Enviar"
+        name="enviar"
+      />
+    </form>
+    <footer class="footer">
+      <div class="icono">
+        <a href="#"
+          ><img src="../static/image/instagram.png" alt="instagram"
+        /></a>
+        <a href="#"
+          ><img src="../static/image/facebook.png" alt="facebook"
+        /></a>
+        <a href="#"><img src="../static/image/gorjeo.png" alt="twiter" /></a>
+        <a href="#"
+          ><img src="../static/image/linkedin.png" alt="linkedin"
+        /></a>
+      </div>
+      <a href="/"
+        ><img class="itba-img" src="../static/image/itbank.png" alt=""
+      /></a>
+      <div>
+        © 2022 Banco ITBANK S.A. <br />
+        Todos los derechos Reservados.
+      </div>
+    </footer>
+
+    {% include "login.html" %} {% include "register.html" %} {% block barra %}{%include "barraLateral.html" %} {%endblock %}
+
+    <script src="../static/js/app.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

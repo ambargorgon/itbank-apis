@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'css/app.css' %}" type="text/css" />
+    <title>ITBANK - Personal & Online Banking</title>
+    <!-- include a png icon so that it is rendered correctly and no tpixelated -->
+    <link rel="icon" href="{% static 'image/IB-icon.png'%}" />
+  </head>
+  <body>
+    {% include "header.html" %}
+    <!-- if there is  message display it -->
+    {% for message in messages %}
+    
+    <div class="alert alert-error">
+        <a class="close" href="#" data-dismiss="alert"></a>
+           {{ message }}
+    </div>
+
+    {% endfor %}
+
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide"
+      data-bs-ride="true"
+    >
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="../static/image/letras-carrousel.png"
+            class="d-block w-100"
+            alt="Imagen slider 2"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="../static/image/slide1.png"
+            class="d-block w-100"
+            alt="Imagen slider 1"
+          />
+          <div class="carousel-caption carusel-info">
+            <div class="fondo-azul">
+              <h3>
+                ITBANK <br />
+                EN TUS MANOS
+              </h3>
+            </div>
+            <div>
+              <div class="fondo-azul">
+                <h3>ABRÍ TU CUENTA<br />100% GRATIS<br />100% ONLINE</h3>
+              </div>
+              <br />
+              <div class="fondo-dorado">
+                <ul>
+                  <li>DESCUENTOS EXCLUSIVOS</li>
+                  <li>FINANCIACIONES</li>
+                  <li>ONLINE BANKING</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="../static/image/tarjetas-carrousel.png"
+            class="d-block w-100"
+            alt="Imagen slider 3"
+          />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <section
+      class="fondo-tarjetas"
+      style="transform: scale(0.9); border-radius: 20px"
+    >
+      <h1 class="titulo-tarjeta">¡ELEGÍ TU PLAN Y CONOCÉ LOS BENEFICIOS!</h1>
+      <div class="container-tipoTarje">
+        <!-- Inicio tarjeta -->
+        <div class="tarjeta">
+          <h3>ITBANK CLASSIC</h3>
+          <ul>
+            <li>Caja de ahorro en pesos</li>
+            <li>Servicio de Cuenta</li>
+            <li>Super Préstamos</li>
+          </ul>
+          <button class="btn-click">
+            <a href="/cuentas">¡Quiero saber más!</a>
+          </button>
+          <img
+            class="imgPosition"
+            src="../static/image/tarjeta-azul.png"
+            alt="Tarjeta azul"
+          />
+        </div>
+        <!-- Inicio tarjetas -->
+        <div class="tarjeta gold">
+          <h3>ITBANK GOLD</h3>
+          <ul>
+            <li>Caja de ahorro en dolar</li>
+            <li>Servicio de Cuenta</li>
+            <li>Tarjeta internacional</li>
+          </ul>
+          <button class="btn-click">
+            <a href="/cuentas">¡Quiero saber más!</a>
+          </button>
+          <img
+            class="imgPosition"
+            src="../static/image/tarjeta-gold.png"
+            alt="Tarjeta gold"
+          />
+        </div>
+
+        <div class="tarjeta black">
+          <h3>ITBANK BLACK</h3>
+          <ul>
+            <li>Sin límite de extracción</li>
+            <li>5 tarjetas físicas</li>
+            <li>Compra y venta de dólares</li>
+          </ul>
+          <button class="btn-click">
+            <a href="/cuentas">¡Quiero saber más!</a>
+          </button>
+          <img
+            class="imgPosition"
+            src="../static/image/tarjeta-black.png"
+            alt="Tarjeta black"
+          />
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="icono">
+        <a href="#"
+          ><img src="../static/image/instagram.png" alt="instagram"
+        /></a>
+        <a href="#"
+          ><img src="../static/image/facebook.png" alt="facebook"
+        /></a>
+        <a href="#"><img src="../static/image/gorjeo.png" alt="twiter" /></a>
+        <a href="#"
+          ><img src="../static/image/linkedin.png" alt="linkedin"
+        /></a>
+      </div>
+      <a href="/"
+        ><img class="itba-img" src="../static/image/itbank.png" alt=""
+      /></a>
+      <div>
+        © 2022 Banco ITBANK S.A. <br />
+        Todos los derechos Reservados.
+      </div>
+    </footer>
+
+    {% include "login.html" %} {% include "register.html" %} 
+    {% block barra %}{% include "barraLateral.html" %} {%endblock %}
+
+    <script src="../static/js/app.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

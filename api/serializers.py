@@ -7,6 +7,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username']
+        
 class SucursalSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Sucursal

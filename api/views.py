@@ -20,15 +20,26 @@ from itertools import chain
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import action
 
+# 1. Un cliente autenticado, puede obtener sus propios datos
+class DatosCliente(viewsets.ReadOnlyModelViewSet):
 
-class UserViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = User.objects.all()
-    # queryset = Cuenta.objects.all()
-    serializer_class = UserSerializer
+    queryset = Cliente.objects.all()
+    serializer_class = ClienteSerializer
 
     def get_queryset(self):
-        user = super().get_queryset().filter(username=self.request.user.username)
-        return user
+        cliente = super().get_queryset().filter(customer_dni=self.request.user.username)
+        return cliente
+
+# 2. Un cliente autenticado, puede obtener su tipo de cuenta y su saldo
+class SaldoCLiente(viewsets.ReadOnlyModelViewSet):
+
+    queryset = Cliente.objects.all()
+    serializer_class = ClienteSerializer
+
+    def get_queryset(self):
+        cuenta = super().get_queryset().filter(customer_dni=self.request.user.username)
+        return cuenta
+
 
 class ClienteViewSet(viewsets.ModelViewSet):
     queryset = Cliente.objects.all()

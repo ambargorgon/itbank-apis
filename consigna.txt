@@ -1,0 +1,9 @@
+OBTENER DATOS DE UN CLIENTE:
+Un cliente autenticado puede consultar sus propios datos:
+(se ingresa sesion en index)
+http://127.0.0.1:8000/api/datos-cliente
+
+
+OBTENER SALDO DE CUENTA DE UN CLIENTE:
+Un cliente autenticado puede obtener el tipo de cuenta y su saldo:
+http://127.0.0.1:8000/api/cuentas

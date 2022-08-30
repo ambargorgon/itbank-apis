@@ -4,7 +4,10 @@ from api import views
 
 # Cree un enrutador y registre nuestros conjuntos de vistas con él.
 router = DefaultRouter()
-router.register(r'api/datos-cliente', views.DatosCliente, basename='user')
+router.register(r'api/datos-cliente', views.DatosCliente, basename='datos-cliente')
+router.register(r'api/saldo-cliente', views.SaldoCliente, basename='saldo-cliente')
+router.register(r'api/prestamo-cliente', views.PrestamoCliente, basename='prestamo-cliente')
+router.register(r'api/prestamo-sucursal', views.PrestamoSucursal, basename='prestamo-sucursal')
 router.register(r'api/clientes', views.ClienteViewSet, basename='cliente')
 router.register(r'api/cuentas',  views.CuentaViewSet, basename='cuenta')
 router.register(r'api/prestamos',  views.PrestamoViewSet, basename='prestamo')

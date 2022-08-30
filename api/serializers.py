@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from dataclasses import fields
-from itbankFs.models import Sucursal, Cliente, Cuenta, Prestamo,Tarjeta
+from itbankFs.models import Sucursal, Cliente, Cuenta, Prestamo, Tarjeta, TipoCliente
 from django.contrib.auth.models import User
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -11,8 +10,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class SucursalSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Sucursal
-        fields = ['branch_id', 'branch_number',
-                  'branch_name', 'branch_address_id', 'direccion']
+        fields = ['branch_id', 'branch_number', 'branch_name', 'branch_address_id', 'directions']
 
 
 class PrestamoSerializer(serializers.HyperlinkedModelSerializer):
@@ -36,11 +34,14 @@ class ClienteSerializer(serializers.HyperlinkedModelSerializer):
 class CuentaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Cuenta
-        fields = ['account_id', 'customer_id',
-                  'balance', 'iban']
+        fields = ['balance']
         read_only_fields = (
             "account_id",
         )
+    class TipoCuentaSerializer(serializers.HyperlinkedModelSerializer):
+        class Meta:
+            model = TipoCliente
+            fields = ['customer_type']
 
 
 class TarjetaSerializer(serializers.HyperlinkedModelSerializer):
@@ -49,3 +50,9 @@ class TarjetaSerializer(serializers.HyperlinkedModelSerializer):
         model = Tarjeta
         fields = ['card_id', 'card_number', 'customer_id', 'cvv',
                   'creation_date', 'expire_date', 'card_type', 'brand','client_type']
+
+class TipoClienteSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = TipoCliente
+        fields = ['customer_id', 'client_type', 'card_brand', 'card_type', 'card_number', 'cvv', 'card_issue_date', 'card_expiration_date']
+

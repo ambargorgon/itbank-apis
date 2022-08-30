@@ -4,10 +4,10 @@ from django.db import models
 
 class Sucursal(models.Model):
     branch_id = models.AutoField(primary_key=True)
-    branch_number = models.BinaryField()
+    branch_number = models.TextField()
     branch_name = models.TextField()
     branch_address_id = models.IntegerField()
-    direccion = models.TextField()
+    directions = models.TextField()
 
 # Clientes
 class Cliente(models.Model):
@@ -49,3 +49,14 @@ class Tarjeta(models.Model):
     card_type = models.TextField()
     brand = models.TextField()
     client_type = models.TextField()
+
+# Tipo Cliente 
+class TipoCliente(models.Model):
+    customer_id = models.AutoField(primary_key=True)
+    client_type = models.TextField()
+    card_brand = models.TextField()
+    card_type = models.TextField()
+    card_number = models.IntegerField()
+    cvv = models.IntegerField()
+    card_issue_date = models.TextField()
+    card_expiration_date = models.TextField()

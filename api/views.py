@@ -4,8 +4,8 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from rest_framework import generics
 from rest_framework.permissions import IsAdminUser
-from itbankFs.models import Sucursal, Cliente, Cuenta, Prestamo, Tarjeta
-from .serializers import CuentaSerializer, PrestamoSerializer, SucursalSerializer, ClienteSerializer, TarjetaSerializer, UserSerializer
+from itbankFs.models import Sucursal, Cliente, Cuenta, Prestamo, Tarjeta, TipoCliente
+from .serializers import CuentaSerializer, PrestamoSerializer, SucursalSerializer, ClienteSerializer, TarjetaSerializer, UserSerializer, TipoClienteSerializer
 from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -27,18 +27,47 @@ class DatosCliente(viewsets.ReadOnlyModelViewSet):
     serializer_class = ClienteSerializer
 
     def get_queryset(self):
-        cliente = super().get_queryset().filter(customer_dni=self.request.user.username)
+        cliente = super().get_queryset().filter(customer_id=self.request.user.username)
         return cliente
 
 # 2. Un cliente autenticado, puede obtener su tipo de cuenta y su saldo
-class SaldoCLiente(viewsets.ReadOnlyModelViewSet):
-
-    queryset = Cliente.objects.all()
-    serializer_class = ClienteSerializer
+class SaldoCliente(viewsets.ReadOnlyModelViewSet):
 
     def get_queryset(self):
-        cuenta = super().get_queryset().filter(customer_dni=self.request.user.username)
+        cuenta = Cuenta.objects.filter(customer_id=self.request.user.username)
+
         return cuenta
+        # tipoCuenta = TipoCliente.objects.all().filter(
+        #     customer_id=self.request.user.username)
+        # return list(chain(cuenta, tipoCuenta))
+
+    serializer_class = CuentaSerializer
+
+# 3. Un cliente autenticado, puede obtener el tipo de préstamo y el total del mismo
+class PrestamoCliente(viewsets.ReadOnlyModelViewSet):
+
+        serializer_class = PrestamoSerializer
+    
+        def get_queryset(self):
+
+            prestamo = Prestamo.objects.all().filter(customer_id=23)
+
+            return prestamo
+
+
+# 4. Un empleado autenticado puede obtener el listado de prestamos otorgados por una sucursal
+class PrestamoSucursal(viewsets.ReadOnlyModelViewSet):
+
+    serializer_class = SucursalSerializer
+
+    def get_queryset(self):
+
+        sucursal_id = self.request.GET.get('sucursal_id')
+        prestamos_sucursal = Sucursal.objects.all().filter(branch_id=sucursal_id)
+        return prestamos_sucursal
+    
+
+
 
 
 class ClienteViewSet(viewsets.ModelViewSet):

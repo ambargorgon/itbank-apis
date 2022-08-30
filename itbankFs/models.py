@@ -16,7 +16,7 @@ class Cliente(models.Model):
     customer_surname = models.TextField()
     customer_dni = models.TextField(db_column='customer_DNI')
     dob = models.TextField(blank=True, null=True)
-    branch = models.ForeignKey(Sucursal, models.DO_NOTHING)
+    branch = models.TextField()
     directions = models.TextField()
 
 

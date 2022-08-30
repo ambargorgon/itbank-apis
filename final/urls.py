@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from itbankFs import views
-from api.views  import SucursalViewSet
+# from api.views  import SucursalViewSet
 
 urlpatterns = [
     path('', views.home),

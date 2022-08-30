@@ -16,7 +16,7 @@ class SucursalSerializer(serializers.HyperlinkedModelSerializer):
 class PrestamoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Prestamo
-        fields = ['loan_id', 'loan_type', 'loan_date', 'loan_total']
+        fields = ['loan_id', 'loan_type', 'loan_date', 'loan_total', 'customer_id']
 
 
 class ClienteSerializer(serializers.HyperlinkedModelSerializer):
@@ -38,10 +38,8 @@ class CuentaSerializer(serializers.HyperlinkedModelSerializer):
         read_only_fields = (
             "account_id",
         )
-    class TipoCuentaSerializer(serializers.HyperlinkedModelSerializer):
-        class Meta:
-            model = TipoCliente
-            fields = ['customer_type']
+
+        
 
 
 class TarjetaSerializer(serializers.HyperlinkedModelSerializer):
@@ -55,4 +53,3 @@ class TipoClienteSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = TipoCliente
         fields = ['customer_id', 'client_type', 'card_brand', 'card_type', 'card_number', 'cvv', 'card_issue_date', 'card_expiration_date']
-
